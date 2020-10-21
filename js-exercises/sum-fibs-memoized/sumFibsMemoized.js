@@ -17,17 +17,16 @@ function sumFibs(num) {
   return sumOfOddNum;
 }
 
-/* eslint-disable */
-
-function cacheFunction(sumFibs) {
+function cacheFunction(sumOfFibs) {
   const memo = {};
   return (value) => {
+    /* eslint-disable */
     if (!memo.hasOwnProperty(value)) {
-      memo[value] = sumFibs(value);
+      memo[value] = sumOfFibs(value);
     }
+    /* eslint-enable */
     return memo[value];
   };
 }
-/* eslint-enable */
 
 export { sumFibs, cacheFunction };
