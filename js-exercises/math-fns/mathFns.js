@@ -1,17 +1,36 @@
-// You can use the function from the `Math` module.
+// You can't use the function from the `Math` module.
 
 function sqrt(number) {
-  return typeof number === 'number' ? Math.sqrt(number) : null;
+  let sqrtNumber = 1;
+
+  while (number / sqrtNumber !== sqrtNumber) {
+    sqrtNumber += 1;
+  }
+
+  return sqrtNumber;
 }
 
 function power(number, powerOf) {
-  return typeof number === 'number' && typeof powerOf === 'number'
-    ? number ** powerOf
-    : null;
+  let powerOfResult = 1;
+  for (let i = 1; i <= powerOf; i += 1) {
+    powerOfResult *= number;
+  }
+
+  return powerOfResult;
 }
 
 function round(floatNumber) {
-  return typeof floatNumber === 'number' ? Math.round(floatNumber) : null;
+  const decimalValue = (floatNumber % 1) * 10;
+
+  /* eslint-disable */
+  let integerValue = parseInt(floatNumber);
+  /* eslint-enable */
+
+  if (decimalValue >= 5) {
+    integerValue += 1;
+  }
+
+  return integerValue;
 }
 
 // Don't change the exported names.
