@@ -53,9 +53,17 @@ export default class LinkList {
     }
   }
 
-  //   traverse() {
-  //     // not sure what needs to be done on this
-  //   }
+  traverse() {
+    const elements = [];
+    let currentNode = this.head;
+
+    while (currentNode) {
+      elements.push(currentNode);
+      currentNode = currentNode.next;
+    }
+
+    return elements;
+  }
 
   contains(value) {
     if (!this.head) {
@@ -76,14 +84,6 @@ export default class LinkList {
 
   length() {
     // code here
-    const elements = [];
-    let currentNode = this.head;
-
-    while (currentNode) {
-      elements.push(currentNode);
-      currentNode = currentNode.next;
-    }
-
-    return elements.length;
+    return this.traverse().length;
   }
 }
