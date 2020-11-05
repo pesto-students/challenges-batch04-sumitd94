@@ -32,6 +32,38 @@ class Cycled {
     return this.arrayToBeCycled.indexOf(searchValue);
   }
 
+  reversed() {
+    return {
+      reversedArr: [...this.arrayToBeCycled].reverse(),
+      index: 0,
+      next() {
+        const curIndex = this.index;
+        if (this.index >= this.reversedArr.length) {
+          return { value: this.index, done: true };
+        }
+
+        this.index += 1;
+        return { value: this.reversedArr[curIndex], done: false };
+      },
+    };
+  }
+
+  [Symbol.iterator]() {
+    return {
+      arr: this.arrayToBeCycled,
+      index: this.currentIndex,
+      next() {
+        const curIndex = this.index;
+        if (curIndex >= this.arr.length) {
+          return { value: this.index, done: true };
+        }
+
+        this.index += 1;
+        return { value: this.arr[curIndex], done: false };
+      },
+    };
+  }
+
   //   reversed() {
   //     //const reversedArr = this.arrayToBeCycled.reverse();
   //     console.log(this.arrayToBeCycled.reverse());
