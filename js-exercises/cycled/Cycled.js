@@ -18,6 +18,16 @@ class Cycled {
     return this.arrayToBeCycled[this.currentIndex];
   }
 
+  get index() {
+    return this.currentIndex;
+  }
+
+  set index(value) {
+    if (this.arrayToBeCycled[value]) {
+      this.currentIndex = value;
+    }
+  }
+
   previous() {
     if (this.currentIndex === 0) {
       this.currentIndex = this.arrayToBeCycled.length - 1;
